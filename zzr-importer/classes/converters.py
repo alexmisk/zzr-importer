@@ -1,17 +1,38 @@
+from abc import ABC, abstractmethod
 from models.data.generic import Data
 from models.drupal.nodes.zzr import ZZRNewsNode
 
 
-class DataConverter:
+class DataConverter(ABC):
+    @property
+    @abstractmethod
+    def name():
+        pass
+
     @staticmethod
+    @abstractmethod
     def convert(data: Data):
-        if data.provider == "feedly":
-            return FeedlyConverter.convert(data)
-        else:
-            return None
+        pass
 
 
-class FeedlyConverter:
+class DataConverterFactory:
+    def __init__(self):
+        self._converters = []
+
+    def add_converter(self, converter: DataConverter):
+        if not (converter in self._converters):
+            self._converters.append(converter)
+
+    def convert(self, data: Data):
+        for converter in self._converters:
+            if converter.name == data.provider:
+                return converter.convert(data)
+        return False
+
+
+class FeedlyConverter(DataConverter):
+    name = "feedly"
+
     @staticmethod
     def convert(data: Data):
         nodes = []

@@ -1,11 +1,11 @@
 from settings.adapters import DrupalRESTAdapterSettings
 from classes.auth import RESTClient
 from classes.notifiers import Notifier
-from classes.converters import DataConverter
+from classes.converters import DataConverterFactory
 from models.data.generic import Data
 
 
-class DrupalRESTAdapter(RESTClient, Notifier):
+class DrupalRESTAdapter(RESTClient, Notifier, DataConverterFactory):
     def __init__(self, settings: DrupalRESTAdapterSettings):
         super().__init__(settings)
         self._base_url = settings.base_url
@@ -16,7 +16,7 @@ class DrupalRESTAdapter(RESTClient, Notifier):
         return response.status_code
 
     def import_nodes(self, data: Data):
-        nodes = DataConverter.convert(data)
+        nodes = self.convert(data)
         updated = False
         for node in nodes:
             response = self._create_node(node)
