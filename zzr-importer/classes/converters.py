@@ -17,11 +17,10 @@ class DataConverter(ABC):
 
 class DataConverterFactory:
     def __init__(self):
-        self._converters = []
+        self._converters = set()
 
     def add_converter(self, converter: DataConverter):
-        if not (converter in self._converters):
-            self._converters.append(converter)
+        self._converters.add(converter)
 
     def convert(self, data: Data):
         for converter in self._converters:
