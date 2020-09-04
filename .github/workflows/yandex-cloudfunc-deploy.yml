@@ -1,0 +1,18 @@
+name: Deploy as Yandex Cloud Function
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: goodsmileduck/yandex-serverless-action@v1
+      with:
+        token: ${{ secrets.TOKEN }}
+        function_id: ${{ secrets.FUNC_ID }}
+        runtime: 'python37-preview'
+        memory: '128'
+        entrypoint: 'app.main'
+        source: 'zzr-importer'
+        execution_timeout: '40'
+        environment: FEEDLY_REFRESH_TOKEN=${{ secrets.FEEDLY_REFRESH_TOKEN }},FEEDLY_RETURNED_POSTS_COUNT=${{ secrets.FEEDLY_RETURNED_POSTS_COUNT }},ZZR_CLIENT_ID=${{ secrets.ZZR_CLIENT_ID }},ZZR_CLIENT_SECRET=${{ secrets.ZZR_CLIENT_SECRET }},ZZR_BASE_URL=${{ secrets.ZZR_BASE_URL }},ZZR_AUTHORIZATION_URL=${{ secrets.ZZR_AUTHORIZATION_URL }},ZZR_TOKEN_URL=${{ secrets.ZZR_TOKEN_URL }},SENDPULSE_CLIENT_ID=${{secrets.SENDPULSE_CLIENT_ID}},SENDPULSE_CLIENT_SECRET=${{secrets.SENDPULSE_CLIENT_SECRET}},SENDPULSE_BASE_URL=${{ secrets.SENDPULSE_BASE_URL }},SENDPULSE_TOKEN_URL=${{ secrets.SENDPULSE_TOKEN_URL }},SENDPULSE_NOTIFICATION_EMAILS=${{ secrets.SENDPULSE_NOTIFICATION_EMAILS }}
