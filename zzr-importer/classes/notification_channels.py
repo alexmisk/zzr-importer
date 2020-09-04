@@ -30,7 +30,7 @@ class SendPulseSMTPNotificationChannel(NotificationChannel, RESTClient):
         for email in self.emails:
             payload = {
                 "email": {
-                    "text": "Есть новости на модерацию https://dev.zzr.ru/admin/moderation/news",
+                    "text": "Есть новости на модерацию https://zzr.ru/admin/moderation/news",
                     "subject": "На zzr.ru появились новости для модерации",
                     "from": {"name": "ZZR Robot", "email": "robot@zzr.ru"},
                     "to": [{"name": email, "email": email}],
