@@ -26,7 +26,7 @@ class DataConverterFactory:
         for converter in self._converters:
             if converter.name == data.provider:
                 return converter.convert(data)
-        return False
+        return []
 
 
 class FeedlyConverter(DataConverter):
