@@ -5,10 +5,15 @@ from classes.converters import DataConverterFactory
 from models.data.generic import Data
 
 
-class DrupalRESTAdapter(RESTClient, Notifier, DataConverterFactory):
-    def __init__(self, settings: DrupalRESTAdapterSettings):
+class DrupalRESTAdapter(RESTClient, Notifier):
+    def __init__(
+        self,
+        settings: DrupalRESTAdapterSettings,
+        converter_factory: DataConverterFactory = DataConverterFactory(),
+    ):
         super().__init__(settings)
         self._base_url = settings.base_url
+        self._converter_factory = converter_factory
 
     def _create_node(self, payload):
         url = self._base_url + "/node?_format=json"
@@ -16,7 +21,7 @@ class DrupalRESTAdapter(RESTClient, Notifier, DataConverterFactory):
         return response.status_code
 
     def import_nodes(self, data: Data):
-        nodes = self.convert(data)
+        nodes = self._converter_factory.convert(data)
         updated = False
         for node in nodes:
             response = self._create_node(node)
