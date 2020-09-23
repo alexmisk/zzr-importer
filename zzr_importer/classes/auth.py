@@ -1,9 +1,10 @@
-from requests_oauthlib import OAuth2Session
-from oauthlib.oauth2 import BackendApplicationClient, MissingTokenError
+from requests_oauthlib import OAuth2Session  # type: ignore
+from oauthlib.oauth2 import BackendApplicationClient, MissingTokenError  # type: ignore
+from settings.adapters import RESTAdapterSettings
 
 
 class RESTClient:
-    def __init__(self, settings):
+    def __init__(self, settings: RESTAdapterSettings) -> None:
         super().__init__()
         self.client = BackendApplicationClient(client_id=settings.client_id)
         self.session = OAuth2Session(client=self.client)

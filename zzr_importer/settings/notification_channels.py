@@ -1,13 +1,12 @@
-from pydantic.dataclasses import dataclass
+from settings.adapters import RESTAdapterSettings
 from typing import List
 from pydantic import HttpUrl, EmailStr
 
 
-@dataclass
-class SendPulseSMTPNotificationChannelSettings:
+class SendPulseSMTPNotificationChannelSettings(RESTAdapterSettings):
     client_id: str
     client_secret: str
-    token_url: HttpUrl
     base_url: HttpUrl
+    token_url: HttpUrl
     emails: List[EmailStr]
     name: str = "SendPulse"

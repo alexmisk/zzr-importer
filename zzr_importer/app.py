@@ -1,4 +1,7 @@
-def main(*args, **kwargs):
+from typing import Optional, Any
+
+
+def main(*args: Optional[Any], **kwargs: Optional[Any]) -> None:
     from classes.grabbers import FeedlyGrabber
     from classes.adapters import DrupalRESTAdapter
     from classes.notification_channels import SendPulseSMTPNotificationChannel

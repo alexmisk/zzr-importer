@@ -6,26 +6,26 @@ from settings.notification_channels import SendPulseSMTPNotificationChannelSetti
 class NotificationChannel(ABC):
     @property
     @abstractmethod
-    def name(self):
+    def name(self) -> str:
         pass
 
     @abstractmethod
-    def notify(self):
+    def notify(self) -> None:
         pass
 
 
 class SendPulseSMTPNotificationChannel(NotificationChannel, RESTClient):
-    def __init__(self, settings: SendPulseSMTPNotificationChannelSettings):
+    def __init__(self, settings: SendPulseSMTPNotificationChannelSettings) -> None:
         super().__init__(settings)
         self._name = settings.name
         self.emails = settings.emails
         self.base_url = settings.base_url
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
-    def notify(self):
+    def notify(self) -> None:
         url = self.base_url + "/smtp/emails"
         for email in self.emails:
             payload = {

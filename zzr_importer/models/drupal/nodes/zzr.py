@@ -1,20 +1,20 @@
 from models.drupal.nodes.generic import DrupalGenericNode
-from pydantic.dataclasses import dataclass
-from pydantic import AnyUrl
+from typing import Optional, Dict, Any
+from pydantic import AnyUrl, validator
 
 
-@dataclass
 class ZZRNewsNode(DrupalGenericNode):
-    body: str = None
-    header_photo: str = None
-    origin_url: AnyUrl = None
-    parther: str = None
+    body: Optional[str] = None
+    header_photo: Optional[str] = None
+    origin_url: Optional[AnyUrl] = None
+    partner: Optional[str] = None
     news_type: str = "industry_news"
 
-    def __post_init__(self):
-        self.node_type = "news"
+    @validator("node_type", pre=True, always=True)
+    def set_node_type(cls, v: str) -> str:
+        return "news"
 
-    def json(self):
+    def to_json(self) -> Dict[Any, Any]:
         return {
             "uuid": [{"value": self.uuid}],
             "type": [{"target_id": self.node_type}],
