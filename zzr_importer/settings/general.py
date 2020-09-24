@@ -13,7 +13,8 @@ zzr_settings = RESTAdapterSettings(
     client_secret=os.environ["ZZR_CLIENT_SECRET"],
     token_url=parse_obj_as(HttpUrl, os.environ["ZZR_TOKEN_URL"]),
     base_url=parse_obj_as(HttpUrl, os.environ["ZZR_BASE_URL"]),
-    authorization_url=parse_obj_as(HttpUrl, os.environ["ZZR_AUTHORIZATION_URL"]),
+    authorization_url=parse_obj_as(
+        HttpUrl, os.environ["ZZR_AUTHORIZATION_URL"]),
 )
 
 feedly_settings = FeedlyGrabberSettings(

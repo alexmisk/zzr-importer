@@ -32,5 +32,6 @@ class RESTAdapterSettings(BaseModel):
         return v or None
 
     @validator("authorization_url", pre=True, always=True)
-    def default_authorization_url(cls, v: Optional[HttpUrl]) -> Union[str, None]:
+    def default_authorization_url(
+            cls, v: Optional[HttpUrl]) -> Union[str, None]:
         return v or None

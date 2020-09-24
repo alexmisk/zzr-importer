@@ -18,7 +18,8 @@ class NotificationChannel(ABC):
 class SendPulseSMTPNotificationChannel(NotificationChannel, RESTClient):
     """ Wrapper for SendPulse SMTP service """
 
-    def __init__(self, settings: SendPulseSMTPNotificationChannelSettings) -> None:
+    def __init__(
+            self, settings: SendPulseSMTPNotificationChannelSettings) -> None:
         super().__init__(settings)
         self._name = settings.name
         self.emails = settings.emails

@@ -46,7 +46,7 @@ class FeedlyConverter(DataConverter):
             node.title = post["title"]
             try:
                 node.body = post["content"]["content"]
-            except:
+            except BaseException:
                 node.body = post["summary"]["content"]
             node.origin_url = post["originId"]
             nodes.append(node)
