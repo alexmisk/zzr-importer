@@ -1,6 +1,8 @@
-from settings.adapters import RESTAdapterSettings
 from typing import List
-from pydantic import HttpUrl, EmailStr
+
+from pydantic import EmailStr, HttpUrl
+
+from settings.adapters import RESTAdapterSettings
 
 
 class SendPulseSMTPNotificationChannelSettings(RESTAdapterSettings):

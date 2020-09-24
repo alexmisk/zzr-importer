@@ -1,5 +1,7 @@
+from oauthlib.oauth2 import BackendApplicationClient  # type: ignore
+from oauthlib.oauth2 import MissingTokenError
 from requests_oauthlib import OAuth2Session  # type: ignore
-from oauthlib.oauth2 import BackendApplicationClient, MissingTokenError  # type: ignore
+
 from settings.adapters import RESTAdapterSettings
 
 

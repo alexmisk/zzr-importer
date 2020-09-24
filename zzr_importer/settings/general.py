@@ -1,9 +1,12 @@
 import os
+
+from pydantic import EmailStr, HttpUrl
+from pydantic.tools import parse_obj_as
+
 from settings.adapters import RESTAdapterSettings
 from settings.grabbers import FeedlyGrabberSettings
-from settings.notification_channels import SendPulseSMTPNotificationChannelSettings
-from pydantic import HttpUrl, EmailStr
-from pydantic.tools import parse_obj_as
+from settings.notification_channels import \
+    SendPulseSMTPNotificationChannelSettings
 
 zzr_settings = RESTAdapterSettings(
     client_id=os.environ["ZZR_CLIENT_ID"],

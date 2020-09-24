@@ -1,4 +1,5 @@
 from typing import Set
+
 from classes.notification_channels import NotificationChannel
 
 

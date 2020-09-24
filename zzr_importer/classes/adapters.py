@@ -1,9 +1,9 @@
-from settings.adapters import RESTAdapterSettings
 from classes.auth import RESTClient
-from classes.notifiers import Notifier
 from classes.converters import DataConverterFactory
+from classes.notifiers import Notifier
 from models.data.generic import Data
 from models.drupal.nodes.generic import DrupalGenericNode
+from settings.adapters import RESTAdapterSettings
 
 
 class DrupalRESTAdapter(RESTClient, Notifier):

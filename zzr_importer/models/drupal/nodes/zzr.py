@@ -1,6 +1,8 @@
-from models.drupal.nodes.generic import DrupalGenericNode
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
+
 from pydantic import AnyUrl, validator
+
+from models.drupal.nodes.generic import DrupalGenericNode
 
 
 class ZZRNewsNode(DrupalGenericNode):

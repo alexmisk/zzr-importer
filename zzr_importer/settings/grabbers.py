@@ -1,6 +1,7 @@
-from settings.adapters import RESTAdapterSettings
 from pydantic import HttpUrl
 from pydantic.tools import parse_obj_as
+
+from settings.adapters import RESTAdapterSettings
 
 
 class FeedlyGrabberSettings(RESTAdapterSettings):

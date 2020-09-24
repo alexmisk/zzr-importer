@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Sequence, Set
+
 from models.data.generic import Data
 from models.drupal.nodes.generic import DrupalGenericNode
 from models.drupal.nodes.zzr import ZZRNewsNode

@@ -1,7 +1,8 @@
-from models.data.generic import Data
-from classes.auth import RESTClient
-from settings.grabbers import FeedlyGrabberSettings
 from typing import Optional
+
+from classes.auth import RESTClient
+from models.data.generic import Data
+from settings.grabbers import FeedlyGrabberSettings
 
 
 class FeedlyGrabber(RESTClient):
