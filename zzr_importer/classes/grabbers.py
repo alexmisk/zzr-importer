@@ -6,6 +6,8 @@ from settings.grabbers import FeedlyGrabberSettings
 
 
 class FeedlyGrabber(RESTClient):
+    """ Wrapper for Feedly API """
+
     def __init__(self, settings: FeedlyGrabberSettings) -> None:
         super(FeedlyGrabber, self).__init__(settings)
         self._feed_url = settings.feed_url

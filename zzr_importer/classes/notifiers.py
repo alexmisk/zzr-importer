@@ -4,6 +4,8 @@ from classes.notification_channels import NotificationChannel
 
 
 class Notifier:
+    """ Interface-like class for sending messages to Notification Channels """
+
     def __init__(self) -> None:
         super().__init__()
         self._notification_channels: Set[NotificationChannel] = set()

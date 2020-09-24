@@ -1,3 +1,1 @@
-"""
-Collection of classes for data manipulation
-"""
+""" Collection of classes for data manipulation """

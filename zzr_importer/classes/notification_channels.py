@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
 from classes.auth import RESTClient
-from settings.notification_channels import \
-    SendPulseSMTPNotificationChannelSettings
+from settings.notification_channels import SendPulseSMTPNotificationChannelSettings
 
 
 class NotificationChannel(ABC):
@@ -17,6 +16,8 @@ class NotificationChannel(ABC):
 
 
 class SendPulseSMTPNotificationChannel(NotificationChannel, RESTClient):
+    """ Wrapper for SendPulse SMTP service """
+
     def __init__(self, settings: SendPulseSMTPNotificationChannelSettings) -> None:
         super().__init__(settings)
         self._name = settings.name

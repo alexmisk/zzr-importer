@@ -19,6 +19,8 @@ class DataConverter(ABC):
 
 
 class DataConverterFactory:
+    """ Factory for aggregating various converters"""
+
     def __init__(self) -> None:
         self._converters: Set[DataConverter] = set()
 

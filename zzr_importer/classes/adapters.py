@@ -7,6 +7,11 @@ from settings.adapters import RESTAdapterSettings
 
 
 class DrupalRESTAdapter(RESTClient, Notifier):
+    """
+    Adapter class for importing nodes
+    to Drupal8-based sites via RESTful API
+    """
+
     def __init__(
         self,
         settings: RESTAdapterSettings,

@@ -6,6 +6,8 @@ from settings.adapters import RESTAdapterSettings
 
 
 class RESTClient:
+    """ Helper for managing REST session"""
+
     def __init__(self, settings: RESTAdapterSettings) -> None:
         super().__init__()
         self.client = BackendApplicationClient(client_id=settings.client_id)
