@@ -3,14 +3,14 @@ from typing import Any, Optional
 from classes.adapters import DrupalRESTAdapter
 from classes.converters import DataConverterFactory, FeedlyConverter
 from classes.grabbers import FeedlyGrabber
-from classes.notification_channels import SendPulseSMTPNotificationChannel
+from classes.notification_channels import SendPulseNotificationChannel
 from settings.general import feedly_settings, sendpulse_settings, zzr_settings
 
 
 def main(*args: Optional[Any], **kwargs: Optional[Any]) -> None:
 
     feedly_grabber = FeedlyGrabber(settings=feedly_settings)
-    sendpulse = SendPulseSMTPNotificationChannel(settings=sendpulse_settings)
+    sendpulse = SendPulseNotificationChannel(settings=sendpulse_settings)
     converters = DataConverterFactory()
     drupal_importer = DrupalRESTAdapter(
         settings=zzr_settings, converter_factory=converters

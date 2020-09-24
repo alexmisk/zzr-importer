@@ -6,7 +6,7 @@ from pydantic.tools import parse_obj_as
 from settings.adapters import RESTAdapterSettings
 from settings.grabbers import FeedlyGrabberSettings
 from settings.notification_channels import \
-    SendPulseSMTPNotificationChannelSettings
+    SendPulseNotificationChannelSettings
 
 zzr_settings = RESTAdapterSettings(
     client_id=os.environ["ZZR_CLIENT_ID"],
@@ -26,7 +26,7 @@ emails = [
     EmailStr(email) for email in os.environ["SENDPULSE_NOTIFICATION_EMAILS"].split(",")
 ]
 
-sendpulse_settings = SendPulseSMTPNotificationChannelSettings(
+sendpulse_settings = SendPulseNotificationChannelSettings(
     emails=emails,
     client_id=os.environ["SENDPULSE_CLIENT_ID"],
     client_secret=os.environ["SENDPULSE_CLIENT_SECRET"],

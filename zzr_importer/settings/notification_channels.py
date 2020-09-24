@@ -5,7 +5,7 @@ from pydantic import EmailStr, HttpUrl
 from settings.adapters import RESTAdapterSettings
 
 
-class SendPulseSMTPNotificationChannelSettings(RESTAdapterSettings):
+class SendPulseNotificationChannelSettings(RESTAdapterSettings):
     client_id: str
     client_secret: str
     base_url: HttpUrl
